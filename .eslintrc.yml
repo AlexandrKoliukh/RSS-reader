@@ -18,6 +18,3 @@ extends:
   - 'airbnb-base'
   - 'plugin:jest/recommended'
   - 'plugin:lodash-fp/recommended'
-
-rules:
-  no-console: 0
