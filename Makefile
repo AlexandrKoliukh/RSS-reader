@@ -22,4 +22,7 @@ publish:
 test-coverage:
 	npm test -- --coverage
 
+develop:
+	npx webpack-dev-server
+
 .PHONY: test
