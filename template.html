@@ -4,11 +4,13 @@
     <title>Webpack Package</title>
   </head>
   <body>
-    <div id="point">
+    <div id="point" class="container">
       <div class="jumbotron">
         <form class="form-group">
-          <input type="text" class="form-control"/>
-          <input type="submit" class="form-control btn btn-primary">
+          <label for="rssUrl">Введите адрес:</label>
+          <input type="text" class="form-control border" id="rssUrl"/>
+          <small id="rssUrlHelp" class="form-text text-muted">Пример: </small>
+          <input type="submit" class="form-control btn btn-primary mt-2">
         </form>
       </div>
     </div>
