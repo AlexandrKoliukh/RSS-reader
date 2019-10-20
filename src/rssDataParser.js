@@ -1,3 +1,5 @@
+import { uniqueId } from 'lodash';
+
 const parser = new DOMParser();
 
 export default (data) => {
@@ -11,9 +13,12 @@ export default (data) => {
   const items = Array.from(xmlItems).map((i) => {
     const title = i.querySelector('title').firstChild.data;
     const link = i.querySelector('guid').innerHTML;
+    const description = i.querySelector('description').firstChild.data;
     return {
       title,
       link,
+      description,
+      id: uniqueId(),
     }
   });
 

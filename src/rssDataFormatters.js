@@ -1,9 +1,15 @@
 export const rssListItemFormatter = (data) => data.items.map((i) => {
-  return (
-    `<div class="card">
+    return `<div class="card">
         <a href="${i.link}">${i.title}</a>
-    </div>`
-  );
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-toggle="modal"
+          data-target="#modal"
+          id="${i.id}">
+            Показать больше
+        </button>
+    </div>`;
 });
 
 export const rssStreamFormatter = (data) => {

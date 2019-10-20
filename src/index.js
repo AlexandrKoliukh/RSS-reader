@@ -2,6 +2,7 @@ import rssInputValidate from './inputValidator';
 import getRssData from './getRssData';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min';
 
 document.addEventListener('DOMContentLoaded',() => {
   const rssUrlInput = document.getElementById('rssUrl');
@@ -14,4 +15,6 @@ document.addEventListener('DOMContentLoaded',() => {
     rssUrlInput.dispatchEvent(new Event('input'));
   });
   mainForm.addEventListener('submit', getRssData);
+
+
 });

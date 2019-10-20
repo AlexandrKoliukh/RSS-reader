@@ -2,6 +2,7 @@ import WatchJS from 'melanke-watchjs';
 import axios from 'axios';
 import rssDataParser from './rssDataParser';
 import { rssListItemFormatter, rssStreamFormatter } from './rssDataFormatters';
+import getModalContent from './modal';
 
 import store from './Store';
 
@@ -21,6 +22,14 @@ const rssUrlInput = document.getElementById('rssUrl');
 const rssDataContainer = document.getElementById('rssList');
 const rssStreamContainer = document.getElementById('rssStreamList');
 
+const a = (parsedData) => {
+  parsedData.items.map((i) => {
+    document.getElementById(i.id).addEventListener('click', () => {
+      document.getElementById('modal').innerHTML = getModalContent(i);
+    })
+  })
+};
+
 export default (e) => {
   e.preventDefault();
   state.fetchingState = 'requesting';
@@ -34,6 +43,7 @@ export default (e) => {
 
       rssDataContainer.innerHTML += formattedData.join('\n');
       rssStreamContainer.innerHTML += formattedStream;
+      a(parsedData);
       store.setUrlFetched(url);
       state.fetchingState = 'success';
     })
@@ -60,4 +70,3 @@ watch(state, 'fetchingState', () => {
     formSubmitButton.removeAttribute('disabled');
   }
 });
-
