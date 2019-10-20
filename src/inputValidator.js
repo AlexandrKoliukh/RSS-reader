@@ -13,17 +13,24 @@ const rssUrlSubmitButton = document.getElementById('urlSubmit');
 
 export default (e) => {
   const { value } = e.target;
-  console.log(store);
-  state.isValid = isURL(value.trim()) && !store.isUrlFetched(value);
+  state.isValid = isURL(value.trim()) && !store.isUrlFetched(value.trim());
 }
+
+const setValidState = () => {
+  rssUrlSubmitButton.removeAttribute('disabled');
+  rssUrlInput.classList.remove('border-danger');
+};
+
+const setInvalidState = () => {
+  rssUrlSubmitButton.setAttribute('disabled', 'disabled');
+  rssUrlInput.classList.add('border-danger');
+};
 
 watch(state, 'isValid', () => {
   const { isValid } = state;
   if (isValid) {
-    rssUrlSubmitButton.removeAttribute('disabled');
-    rssUrlInput.classList.remove('border-danger');
+    setValidState();
   } else {
-    rssUrlSubmitButton.setAttribute('disabled', 'disabled');
-    rssUrlInput.classList.add('border-danger');
+    setInvalidState();
   }
 });
