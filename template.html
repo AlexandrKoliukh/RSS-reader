@@ -1,18 +1,33 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <title>Webpack Package</title>
-  </head>
-  <body>
-    <div id="point" class="container">
-      <div class="jumbotron">
-        <form class="form-group">
-          <label for="rssUrl">Введите адрес:</label>
-          <input type="text" class="form-control border" id="rssUrl"/>
-          <small id="rssUrlHelp" class="form-text text-muted">Пример: </small>
-          <input type="submit" class="form-control btn btn-primary mt-2">
+</head>
+<body>
+<div id="point" class="container">
+    <div class="jumbotron">
+        <form class="form-group" id="mainForm">
+            <label for="rssUrl">Введите адрес:</label>
+            <input type="text" class="form-control border" id="rssUrl"/>
+            <small id="rssUrlHelp" class="form-text text-muted">Пример: http://lorem-rss.herokuapp.com/feed</small>
+            <input type="submit"
+                   disabled
+                   id="urlSubmit"
+                   class="form-control btn btn-primary mt-2"
+            >
         </form>
-      </div>
     </div>
-  </body>
+    <div id="rssData">
+        <div id="rssItem">
+        </div>
+    </div>
+    <div class="loader-container d-none" id="loaderContainer">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>
