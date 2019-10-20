@@ -14,6 +14,7 @@ const corsUrl = 'https://cors-anywhere.herokuapp.com/';
 
 const state = {
   fetchingState: 'none',
+  rssItems: [],
 };
 
 const mainForm = document.getElementById('mainForm');
@@ -22,7 +23,7 @@ const rssUrlInput = document.getElementById('rssUrl');
 const rssDataContainer = document.getElementById('rssList');
 const rssStreamContainer = document.getElementById('rssStreamList');
 
-const a = (parsedData) => {
+const setClickOnItems = (parsedData) => {
   parsedData.items.map((i) => {
     document.getElementById(i.id).addEventListener('click', () => {
       document.getElementById('modal').innerHTML = getModalContent(i);
@@ -43,7 +44,8 @@ export default (e) => {
 
       rssDataContainer.innerHTML += formattedData.join('\n');
       rssStreamContainer.innerHTML += formattedStream;
-      a(parsedData);
+      setClickOnItems(parsedData);
+
       store.setUrlFetched(url);
       state.fetchingState = 'success';
     })
