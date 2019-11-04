@@ -2,11 +2,7 @@ class Store {
   constructor() {
     this.state = {
       fetchedUrls: [],
-    }
-  }
-
-  getFetchedUrls() {
-    return this.state.fetchedUrls;
+    };
   }
 
   setUrlFetched(url) {
@@ -20,4 +16,4 @@ class Store {
   }
 }
 
-export default new Store;
+export default new Store();

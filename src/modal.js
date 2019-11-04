@@ -1,7 +1,5 @@
-const getModalContent = (data) => {
-
-  return (
-    `
+const getModalContent = data => (
+  `
       <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -19,8 +17,5 @@ const getModalContent = (data) => {
           </div>
       </div>
     `
-  );
-}
-;
-
+);
 export default getModalContent;

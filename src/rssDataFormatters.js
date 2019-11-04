@@ -1,5 +1,4 @@
-export const rssListItemFormatter = (data) => data.items.map((i) => {
-    return `<div class="card">
+export const rssListItemFormatter = data => data.map(i => `<div class="card">
         <a href="${i.link}">${i.title}</a>
         <button
           type="button"
@@ -9,14 +8,11 @@ export const rssListItemFormatter = (data) => data.items.map((i) => {
           id="${i.id}">
             Показать больше
         </button>
-    </div>`;
-});
+    </div>`);
 
-export const rssStreamFormatter = (data) => {
-  return (
-    `<div class="card">
+export const rssStreamFormatter = data => (
+  `<div class="card">
         <h4>${data.title}</h4>
         <p>${data.description}</p>
     </div>`
-  );
-};
+);

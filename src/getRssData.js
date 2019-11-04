@@ -1,4 +1,6 @@
 import WatchJS from 'melanke-watchjs';
+// eslint-disable-next-line lodash-fp/use-fp
+import { differenceWith } from 'lodash';
 import axios from 'axios';
 import rssDataParser from './rssDataParser';
 import { rssListItemFormatter, rssStreamFormatter } from './rssDataFormatters';
@@ -15,6 +17,11 @@ const corsUrl = 'https://cors-anywhere.herokuapp.com/';
 const state = {
   fetchingState: 'none',
   rssItems: [],
+  rssStreams: [],
+  newPostsFetchingState: 'none',
+  newPosts: [],
+  timer: null,
+  url: '',
 };
 
 const mainForm = document.getElementById('mainForm');
@@ -23,43 +30,40 @@ const rssUrlInput = document.getElementById('rssUrl');
 const rssDataContainer = document.getElementById('rssList');
 const rssStreamContainer = document.getElementById('rssStreamList');
 
-const setClickOnItems = (parsedData) => {
-  parsedData.items.map((i) => {
-    document.getElementById(i.id).addEventListener('click', () => {
-      document.getElementById('modal').innerHTML = getModalContent(i);
-    })
+const fetchRss = () => axios.get(`${corsUrl}${state.url}`)
+  .then(({ data }) => {
+    const parsedData = rssDataParser(data);
+
+    if (!store.isUrlFetched(state.url)) {
+      state.rssStreams = [parsedData.stream, ...state.rssStreams];
+    }
+    const newPosts = differenceWith(
+      parsedData.items, state.rssItems, (obj1, obj2) => obj2.link === obj1.link,
+    );
+    state.rssItems = [...newPosts, ...state.rssItems];
+
+    store.setUrlFetched(state.url);
   })
-};
+  .then(() => setTimeout(() => fetchRss(), 5000));
 
-export default (e) => {
+const handleSubmit = (e) => {
   e.preventDefault();
+  state.url = rssUrlInput.value.trim();
   state.fetchingState = 'requesting';
-  const url = rssUrlInput.value.trim();
-
-  return axios.get(`${corsUrl}${url}`)
-    .then(({ data }) => {
-      const parsedData = rssDataParser(data);
-      const formattedData = rssListItemFormatter(parsedData);
-      const formattedStream = rssStreamFormatter(parsedData);
-
-      rssDataContainer.innerHTML += formattedData.join('\n');
-      rssStreamContainer.innerHTML += formattedStream;
-      setClickOnItems(parsedData);
-
-      store.setUrlFetched(url);
+  fetchRss()
+    .then(() => {
       state.fetchingState = 'success';
     })
     .catch((error) => {
       state.fetchingState = 'failed';
       throw new Error(error);
     });
-}
+};
 
 const loader = document.getElementById('loaderContainer');
 
 watch(state, 'fetchingState', () => {
   const { fetchingState } = state;
-
   if (fetchingState === 'requesting') {
     loader.classList.remove('d-none');
     formSubmitButton.setAttribute('disabled', 'disabled');
@@ -72,3 +76,21 @@ watch(state, 'fetchingState', () => {
     formSubmitButton.removeAttribute('disabled');
   }
 });
+
+watch(state, 'rssItems', () => {
+  const { rssItems } = state;
+  rssDataContainer.innerHTML = rssListItemFormatter(rssItems).join('\n');
+  rssItems.forEach((i) => {
+    document.getElementById(i.id).addEventListener('click', () => {
+      document.getElementById('modal').innerHTML = getModalContent(i);
+      return false;
+    });
+  });
+});
+watch(state, 'rssStreams', () => {
+  const { rssStreams } = state;
+  const formattedStreams = rssStreams.map(i => rssStreamFormatter(i));
+  rssStreamContainer.innerHTML = formattedStreams.join('\n');
+});
+
+export default handleSubmit;

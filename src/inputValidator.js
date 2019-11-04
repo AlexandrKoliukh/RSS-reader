@@ -14,7 +14,7 @@ const rssUrlSubmitButton = document.getElementById('urlSubmit');
 export default (e) => {
   const { value } = e.target;
   state.isValid = isURL(value.trim()) && !store.isUrlFetched(value.trim());
-}
+};
 
 const setValidState = () => {
   rssUrlSubmitButton.removeAttribute('disabled');
