@@ -1,21 +1,20 @@
 import uniqueId from 'lodash/fp/uniqueId';
 
 const parser = new DOMParser();
-const getData = node => (node.firstChild ? node.firstChild.data : node.innerText);
 
 export default (data) => {
   const docXML = parser.parseFromString(data, 'text/xml');
   const error = docXML.querySelector('parsererror');
   if (error) throw new Error(error.querySelector('sourcetext').innerText);
-  const xmlItems = docXML.querySelectorAll('item');
 
-  const description = getData(docXML.querySelector('description'));
-  const title = getData(docXML.querySelector('title'));
+  const xmlItems = docXML.querySelectorAll('item');
+  const description = docXML.querySelector('channel > title').textContent;
+  const title = docXML.querySelector('channel > description').textContent;
 
   const items = Array.from(xmlItems).map(i => ({
-    title: getData(i.querySelector('title')),
+    title: i.querySelector('title').textContent,
     link: i.querySelector('guid').innerHTML,
-    description: getData(i.querySelector('description')),
+    description: i.querySelector('description').textContent,
     pubDate: i.querySelector('pubDate').innerHTML,
     id: uniqueId(),
   }));
