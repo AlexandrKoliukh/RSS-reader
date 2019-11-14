@@ -1,5 +1,3 @@
-import uniqueId from 'lodash/fp/uniqueId';
-
 const parser = new DOMParser();
 
 export default (data) => {
@@ -16,14 +14,12 @@ export default (data) => {
     link: i.querySelector('guid').innerHTML,
     description: i.querySelector('description').textContent,
     pubDate: i.querySelector('pubDate').innerHTML,
-    id: uniqueId(),
   }));
 
   return {
     stream: {
       description,
       title,
-      id: uniqueId(),
     },
     items,
   };
