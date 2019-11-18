@@ -30,7 +30,10 @@ export const fetchRss = (state) => {
 
       currentState.rssItems = [...newPosts, ...currentState.rssItems];
     })
-    .then(() => setTimeout(() => fetchRss(), 5000));
+    .then(() => setTimeout(() => fetchRss(currentState), 5000))
+    .catch((error) => {
+      throw new Error(error);
+    });
 };
 
 export const getRssData = (e, state) => {
