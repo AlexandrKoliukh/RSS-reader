@@ -6,9 +6,7 @@ import parseRssData from './rssDataParser';
 
 const isUrlFetched = (url, state) => state.fetchedUrls.includes(url);
 
-const corsUrl = 'https://cors-anywhere.herokuapp.com/';
-
-export const inputValidator = (e, state) => {
+export const checkInputValid = (e, state) => {
   const currentState = state;
   const { value } = e.target;
   currentState.isValid = isURL(value.trim()) && !isUrlFetched(value.trim(), currentState);
@@ -16,6 +14,8 @@ export const inputValidator = (e, state) => {
 
 export const fetchRss = (state) => {
   const currentState = state;
+  const corsUrl = 'https://cors-anywhere.herokuapp.com/';
+
   return axios.get(`${corsUrl}${state.url}`)
     .then(({ data }) => {
       const parsedData = parseRssData(data);
@@ -30,10 +30,7 @@ export const fetchRss = (state) => {
 
       currentState.rssItems = [...newPosts, ...currentState.rssItems];
     })
-    .then(() => setTimeout(() => fetchRss(currentState), 5000))
-    .catch((error) => {
-      throw new Error(error);
-    });
+    .then(() => setTimeout(fetchRss, 5000, currentState));
 };
 
 export const getRssData = (e, state) => {

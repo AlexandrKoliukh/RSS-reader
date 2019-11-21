@@ -1,5 +1,5 @@
 import { watch } from 'melanke-watchjs';
-import { getRssData, inputValidator } from './controllers';
+import { getRssData, checkInputValid } from './controllers';
 import {
   renderForm, renderItems, renderStreams, valid,
 } from './watchers';
@@ -17,8 +17,8 @@ export default () => {
   const rssUrlInput = document.getElementById('rssUrl');
   const mainForm = document.getElementById('mainForm');
 
-  rssUrlInput.addEventListener('input', e => inputValidator(e, state));
-  rssUrlInput.addEventListener('paste', e => inputValidator(e, state));
+  rssUrlInput.addEventListener('input', e => checkInputValid(e, state));
+  rssUrlInput.addEventListener('paste', e => checkInputValid(e, state));
 
   mainForm.addEventListener('reset', () => {
     rssUrlInput.dispatchEvent(new Event('input'));
