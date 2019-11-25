@@ -6,7 +6,7 @@ import parseRssData from './rssDataParser';
 
 const isUrlFetched = (url, state) => state.fetchedUrls.includes(url);
 
-export const checkInputValid = (e, state) => {
+export const change = (e, state) => {
   const currentState = state;
   const { value } = e.target;
   currentState.isValid = isURL(value.trim()) && !isUrlFetched(value.trim(), currentState);
