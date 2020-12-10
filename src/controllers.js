@@ -14,9 +14,9 @@ export const change = (e, state) => {
 
 export const fetchRss = (state) => {
   const currentState = state;
-  const corsUrl = 'https://cors-anywhere.herokuapp.com/';
+  const createUrl = (url) => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
 
-  return axios.get(`${corsUrl}${state.url}`)
+  return axios.get(createUrl(state.url))
     .then(({ data }) => {
       const parsedData = parseRssData(data);
       if (!isUrlFetched(currentState.url, currentState)) {
@@ -36,7 +36,7 @@ export const fetchRss = (state) => {
 export const getRssData = (e, state) => {
   e.preventDefault();
   const currentState = state;
-  const { value } = e.target.rssUrl;
+  const { value } = e.target.elements.rssUrl;
   currentState.url = value.trim();
   currentState.fetchingState = 'requesting';
   fetchRss(currentState)

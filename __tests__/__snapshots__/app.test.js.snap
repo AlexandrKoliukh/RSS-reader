@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fetch and render RSS 1`] = `
+"<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584920\\">
+        Lorem ipsum 2020-12-10T07:22:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584920\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584860\\">
+        Lorem ipsum 2020-12-10T07:21:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584860\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584800\\">
+        Lorem ipsum 2020-12-10T07:20:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584800\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584740\\">
+        Lorem ipsum 2020-12-10T07:19:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584740\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584680\\">
+        Lorem ipsum 2020-12-10T07:18:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584680\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584620\\">
+        Lorem ipsum 2020-12-10T07:17:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584620\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584560\\">
+        Lorem ipsum 2020-12-10T07:16:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584560\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584500\\">
+        Lorem ipsum 2020-12-10T07:15:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584500\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584440\\">
+        Lorem ipsum 2020-12-10T07:14:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584440\\"
+    >
+        Показать больше
+    </button>
+</div>
+<div class=\\"card\\">
+    <a href=\\"http://example.com/test/1607584380\\">
+        Lorem ipsum 2020-12-10T07:13:00Z
+    </a>
+    <button
+        type=\\"button\\"
+        class=\\"btn btn-primary\\"
+        data-toggle=\\"modal\\"
+        data-target=\\"#modal\\"
+        data-href=\\"http://example.com/test/1607584380\\"
+    >
+        Показать больше
+    </button>
+</div>
+"
+`;
+
+exports[`Fetch and render RSS 2`] = `
+"<div class=\\"card\\">
+    <h4>This is a constantly updating lorem ipsum feed</h4>
+    <p>Lorem ipsum feed for an interval of 1 minutes with 10 item(s)</p>
+</div>
+"
+`;
+
+exports[`Fetch and render RSS 3`] = `
+"<div class=\\"modal-dialog\\" role=\\"document\\">
+    <div class=\\"modal-content\\">
+        <div class=\\"modal-header\\">
+            <h5 class=\\"modal-title\\" id=\\"modalTitle\\">
+                Lorem ipsum 2020-12-10T07:22:00Z
+            </h5>
+            <button
+                type=\\"button\\"
+                class=\\"close\\"
+                data-dismiss=\\"modal\\"
+                aria-label=\\"Close\\"
+            >
+                <span aria-hidden=\\"true\\">×</span>
+            </button>
+        </div>
+        <div class=\\"modal-body\\" id=\\"modalBody\\">
+            Anim do culpa laboris Lorem aliqua aute consectetur cupidatat cillum
+            amet aliqua occaecat.
+        </div>
+        <div class=\\"modal-footer\\">
+            <button
+                type=\\"button\\"
+                class=\\"btn btn-secondary\\"
+                data-dismiss=\\"modal\\"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+"
+`;
+
+exports[`initial state 1`] = `""`;
+
+exports[`initial state 2`] = `""`;
+
+exports[`initial state 3`] = `
+"<label for=\\"rssUrl\\">Введите адрес:</label>
+<input
+    type=\\"text\\"
+    class=\\"form-control border\\"
+    id=\\"rssUrl\\"
+    data-testid=\\"urlInput\\"
+/>
+<small id=\\"rssUrlHelp\\" class=\\"form-text text-muted\\">
+    Пример: http://lorem-rss.herokuapp.com/feed
+</small>
+<input
+    type=\\"submit\\"
+    disabled=\\"\\"
+    id=\\"urlSubmit\\"
+    class=\\"form-control btn btn-primary mt-2\\"
+    data-testid=\\"urlSubmit\\"
+/>
+"
+`;

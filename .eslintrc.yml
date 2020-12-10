@@ -17,3 +17,6 @@ extends:
   - 'airbnb-base'
   - 'plugin:jest/recommended'
   - 'plugin:lodash-fp/recommended'
+
+rules:
+  "arrow-parens": off
